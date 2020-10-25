@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    // the all encompassing datacontroller
     @EnvironmentObject var dataController: DataController
 
     var body: some View {

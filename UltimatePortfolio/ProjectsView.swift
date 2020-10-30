@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProjectsView: View {
+    static let openTag: String? = "Open"
+    static let closedTag: String? = "Closed"
     let showClosedProjects: Bool
     
     // not using the property wrapper
@@ -27,7 +29,7 @@ struct ProjectsView: View {
                 ForEach(projects.wrappedValue) { project in
                     Section(header: Text(project.projectTitle)) {
                         ForEach(project.projectItems) { item in
-                            Text(item.itemTitle)
+                            ItemRowView(item: item)
                         }
                     }
                 }

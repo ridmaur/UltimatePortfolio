@@ -21,6 +21,15 @@ struct UltimatePortfolioApp: App {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
+                
+                // when we do receive a notification that the app is pushed to the background
+                // ensure we save the status
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: save)
+            
         }
+    }
+    
+    func save(_ note: Notification) {
+        dataController.save()
     }
 }
